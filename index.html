@@ -57,8 +57,9 @@
 									role="button"
 									data-bs-toggle="dropdown"
 									aria-expanded="false"
+                                    data-bs-auto-close="outside"
 								>
-									Cart
+									<i class="fa-solid fa-cart-shopping"></i>
 									<span
 										class="badge bg-secondary rounded-pill"
 										id="number-of-item"
@@ -71,10 +72,17 @@
 									id="cart-dropdown-list"
 								>
 									<li class="d-flex dropdown-item cart-item">
-										<a class="cart-item-name dropdown-item" href="#" id="cart-item-name"
-											>Product name</a
-										>
-										<button class="dropdown-item cart-item-delete"><i class="fa-solid fa-trash"></i></button>
+                                        <img src="" alt="">
+										<div
+											class="cart-item-name dropdown-item"
+											id="cart-item-name"
+											>
+                                            <span class="cart-item-product">Product name</span><br>
+                                            <span class="cart-item-price">price</span>
+                                        </div>
+										<button class="dropdown-item cart-item-delete">
+											<i class="fa-solid fa-trash"></i>
+										</button>
 									</li>
 									<li><hr class="dropdown-divider" /></li>
 									<li>
@@ -99,11 +107,11 @@
 					<h1>OUR PRODUCTS</h1>
 					<div class="input-group mb-3 search">
 						<button
-							class="btn btn-outline-dark"
+							class="btn btn-dark"
 							type="button"
 							id="button-addon1"
 						>
-							Button
+							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
 						<input
 							type="search"

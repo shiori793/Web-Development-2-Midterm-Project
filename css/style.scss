@@ -10,44 +10,56 @@
 	justify-content: center;
 }
 
+@mixin dropdown-focus-unchange {
+    &:hover, &:focus {
+        background-color: transparent;
+	    color: inherit;
+    }
+}
+
 html {
 	box-sizing: border-box;
-    header {
-        nav {
-            .container-fluid {
-                .collapse {
-                    .navbar-nav {
-                        .cart-dropdown {
-                            .cart-dropdown-list {
-                                .cart-total {
-                                    text-align: center;
-                                    pointer-events: none;
-                                    cursor: default;
-                                    &:hover {
-                                        background-color: transparent;
-                                        color: inherit;
-                                    }
-                                }
-                                .cart-item {
-                                    .cart-item-name {
-                                        pointer-events: none;
-                                        cursor: default;
-                                    }
-                                    .cart-item-delete {
-                                        border-radius: 50%;
-                                    }
-                                    .cart-item-name:hover, .cart-item-delete:hover {
-                                        background-color: transparent;
-                                        color: inherit;
-                                    }
-                                }                                
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+	header {
+		nav {
+			.container-fluid {
+				.collapse {
+					.navbar-nav {
+						.cart-dropdown {
+							.cart-dropdown-list {
+								.cart-total {
+									text-align: center;
+									pointer-events: none;
+									cursor: default;
+									@include dropdown-focus-unchange;
+								}
+								.cart-item {
+									img {
+										width: 70px;
+										height: 40px;
+										background-color: gray;
+										border-radius: 50%;
+										margin: auto;
+									}
+									.cart-item-name {
+										pointer-events: none;
+										cursor: default;
+										@include dropdown-focus-unchange;
+									}
+									.cart-item-delete {
+										border-radius: 50%;
+										width: 50px;
+										height: 40px;
+										margin: auto;
+                                        @include dropdown-focus-unchange;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 	body {
 		main {
 			.welcome {
@@ -105,7 +117,7 @@ html {
 						.card-body {
 							@include flex-column-center;
 							align-items: center;
-                            opacity: 0;
+							opacity: 0;
 							button {
 								width: 80%;
 								border-radius: 20px;
