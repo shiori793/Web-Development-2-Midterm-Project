@@ -1,0 +1,124 @@
+html {
+  box-sizing: border-box;
+}
+html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-total {
+  text-align: center;
+  pointer-events: none;
+  cursor: default;
+}
+html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-total:hover {
+  background-color: transparent;
+  color: inherit;
+}
+html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-item .cart-item-name {
+  pointer-events: none;
+  cursor: default;
+}
+html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-item .cart-item-delete {
+  border-radius: 50%;
+}
+html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-item .cart-item-name:hover, html header nav .container-fluid .collapse .navbar-nav .cart-dropdown .cart-dropdown-list .cart-item .cart-item-delete:hover {
+  background-color: transparent;
+  color: inherit;
+}
+html body main .welcome {
+  height: 90vh;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+html body main .menu .menu-header {
+  background-color: lightcoral;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+html body main .menu .menu-header .search {
+  width: 400px;
+  margin: 0 auto;
+}
+html body main .menu .menu-cards {
+  background-color: lightcyan;
+  padding: 5% 15%;
+}
+html body main .menu .menu-cards::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 0;
+  margin: 0 20px;
+}
+html body main .menu .menu-cards::before {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 0;
+  margin: 0 20px;
+  order: 1;
+}
+html body main .menu .menu-cards .card {
+  width: 200px;
+  height: 300px;
+  margin: 20px 20px;
+  border: 10px solid lightgray;
+  overflow: hidden;
+}
+html body main .menu .menu-cards .card:hover .card-body {
+  -webkit-animation-name: slideIn;
+          animation-name: slideIn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+html body main .menu .menu-cards .card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
+html body main .menu .menu-cards .card .card-body button {
+  width: 80%;
+  border-radius: 20px;
+}
+@media (max-width: 768px) {
+  html body main .menu .menu-cards .card {
+    width: 80%;
+  }
+}
+html body footer {
+  height: 4rem;
+  background-color: black;
+  color: white;
+}/*# sourceMappingURL=style.css.map */

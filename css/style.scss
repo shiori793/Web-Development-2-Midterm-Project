@@ -1,0 +1,133 @@
+@mixin card-laptop($height, $margin-vertical, $margin-horizontal) {
+	width: 200px;
+	height: $height;
+	margin: $margin-vertical $margin-horizontal;
+}
+
+@mixin flex-column-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+html {
+	box-sizing: border-box;
+    header {
+        nav {
+            .container-fluid {
+                .collapse {
+                    .navbar-nav {
+                        .cart-dropdown {
+                            .cart-dropdown-list {
+                                .cart-total {
+                                    text-align: center;
+                                    pointer-events: none;
+                                    cursor: default;
+                                    &:hover {
+                                        background-color: transparent;
+                                        color: inherit;
+                                    }
+                                }
+                                .cart-item {
+                                    .cart-item-name {
+                                        pointer-events: none;
+                                        cursor: default;
+                                    }
+                                    .cart-item-delete {
+                                        border-radius: 50%;
+                                    }
+                                    .cart-item-name:hover, .cart-item-delete:hover {
+                                        background-color: transparent;
+                                        color: inherit;
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+	body {
+		main {
+			.welcome {
+				height: 90vh;
+				background-color: lightblue;
+				@include flex-column-center;
+			}
+			.menu {
+				.menu-header {
+					background-color: lightcoral;
+					height: 120px;
+					@include flex-column-center;
+					.search {
+						width: 400px;
+						margin: 0 auto;
+					}
+				}
+				.menu-cards {
+					background-color: lightcyan;
+					padding: 5% 15%;
+					&::after {
+						content: "";
+						display: block;
+						@include card-laptop(0, 0, 20px);
+					}
+					&::before {
+						content: "";
+						display: block;
+						@include card-laptop(0, 0, 20px);
+						order: 1;
+					}
+					.card {
+						@include card-laptop(300px, 20px, 20px);
+						border: 10px solid lightgray;
+						overflow: hidden;
+						&:hover .card-body {
+							animation-name: slideIn;
+							animation-duration: 1s;
+							animation-timing-function: ease;
+							animation-delay: 0s;
+							animation-iteration-count: 1;
+							animation-direction: normal;
+							animation-fill-mode: forwards;
+						}
+						@keyframes slideIn {
+							0% {
+								transform: translateY(-100%);
+								opacity: 0;
+							}
+							100% {
+								transform: translateY(0);
+								opacity: 1;
+							}
+						}
+						.card-body {
+							@include flex-column-center;
+							align-items: center;
+                            opacity: 0;
+							button {
+								width: 80%;
+								border-radius: 20px;
+							}
+						}
+						// @media (max-width: 992px) {
+						// }
+						@media (max-width: 768px) {
+							width: 80%;
+						}
+					}
+					// @media (max-width: 992px) {
+					// }
+					// @media (max-width: 768px) {
+					// }
+				}
+			}
+		}
+		footer {
+			height: 4rem;
+			background-color: black;
+			color: white;
+		}
+	}
+}
