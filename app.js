@@ -165,8 +165,10 @@ window.addEventListener('load', () => {
                     let storageData = JSON.parse(localStorage.getItem(user_id));
                     cart = new Cart(user_id);
                     cart.cartItems = storageData;
+                    localStorage.setItem(user_id, JSON.stringify(cart.cartItems));
                 } else {
                     cart = new Cart(user_id);
+                    localStorage.setItem(user_id, JSON.stringify(cart.cartItems));
                 }
                 
                 const productList = data;
@@ -207,11 +209,11 @@ window.addEventListener('load', () => {
                 signOutButton.addEventListener('click', () => {
                     user_id = 0;
                     sessionStorage.removeItem('loginUserID');
-                    window.location.replace('./index.html');
+                    window.location.assign('./index.html');
                 });
             });
     } else {
         alert('Your session is invalid. Please log in.');
-        window.location.replace('./index.html');
+        window.location.assign('./index.html');
     }
 });

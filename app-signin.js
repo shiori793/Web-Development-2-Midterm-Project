@@ -6,6 +6,7 @@ loginButton.addEventListener('click', () => {
     if (checkStorage(loginInput)) {
         user_id = loginInput;
         sessionStorage.setItem('loginUserID', user_id);
+        window.location.assign('./home.html');
     } else {
         alert('Your User ID is not valid. Please try again.');
     };
@@ -14,6 +15,7 @@ loginButton.addEventListener('click', () => {
 signinButton.addEventListener('click', () => {
     user_id = localStorage.length + 1;
     sessionStorage.setItem('loginUserID', user_id);
+    window.location.assign('./home.html');
 });
 
 function checkStorage(input) {
