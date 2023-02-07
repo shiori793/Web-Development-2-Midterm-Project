@@ -62,7 +62,7 @@
 									<i class="fa-solid fa-cart-shopping"></i>
 									<span
 										class="badge bg-secondary rounded-pill"
-										id="number-of-item"
+										id="number-of-total-item"
 										>0</span
 									>
 								</a>
@@ -71,25 +71,29 @@
 									aria-labelledby="navbarDropdown"
 									id="cart-dropdown-list"
 								>
-									<li class="d-flex dropdown-item cart-item">
+									<!-- <li class="d-flex dropdown-item cart-item">
                                         <img src="" alt="">
 										<div
 											class="cart-item-name dropdown-item"
 											id="cart-item-name"
 											>
                                             <span class="cart-item-product">Product name</span><br>
-                                            <span class="cart-item-price">price</span>
+                                            <span class="cart-item-price" id="cart-item-price">price</span>
                                         </div>
 										<button class="dropdown-item cart-item-delete">
 											<i class="fa-solid fa-trash"></i>
 										</button>
-									</li>
-									<li><hr class="dropdown-divider" /></li>
+									</li> -->
+									<li id="dropdown-divider"><hr class="dropdown-divider"/></li>
 									<li>
 										<a class="dropdown-item cart-total" href="#" id="cart-total"
 											>Total</a
 										>
 									</li>
+                                    <li class="d-flex justify-content-evenly cart-buttons">
+                                        <button class="btn btn-outline-light" id="clear-button">clear</button>
+                                        <button class="btn btn-outline-light" id="checkout-button">checkout</button>
+                                    </li>
 								</ul>
 							</li>
 						</ul>
@@ -108,7 +112,7 @@
 					<div class="input-group mb-3 search">
 						<button
 							class="btn btn-dark"
-							type="button"
+							type="submit"
 							id="button-addon1"
 						>
 							<i class="fa-solid fa-magnifying-glass"></i>
@@ -119,6 +123,7 @@
 							placeholder="Search"
 							aria-label="Example text with button addon"
 							aria-describedby="button-addon1"
+                            id="search-input"
 						/>
 					</div>
 				</div>
@@ -126,11 +131,11 @@
 					class="menu-cards d-flex justify-content-evenly flex-wrap"
 					id="menu-cards"
 				>
-					<div class="card">
+					<!-- <div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Product name</h5>
 							<p class="card-text">Product price</p>
-							<button class="btn btn-outline-secondary">Add to Cart</button>
+							<button class="btn btn-outline-secondary" id = "add-cart">Add to Cart</button>
 						</div>
 					</div>
 					<div class="card">
@@ -160,12 +165,13 @@
 							<p class="card-text">Product price</p>
 							<button class="btn btn-outline-secondary">Add to Cart</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</main>
 		<footer class="d-flex align-items-center justify-content-center">
 			&copy; Copyright by E-commerce shop
 		</footer>
+        <script src="./app.js"></script>
 	</body>
 </html>
