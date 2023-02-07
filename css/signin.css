@@ -28,6 +28,6 @@ body .form-signin .form-floating input {
 body .form-signin .form-floating::focus-within {
   z-index: 2;
 }
-body .form-signin button {
+body .form-signin .btn {
   margin-bottom: 10px;
 }/*# sourceMappingURL=signin.css.map */
