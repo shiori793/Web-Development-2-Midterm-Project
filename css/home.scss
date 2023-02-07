@@ -1,3 +1,6 @@
+$font-playfair: "Playfair Display", serif;
+$font-lobster: "Lobster", cursive;
+
 @mixin card-laptop($height, $margin-vertical, $margin-horizontal) {
 	width: 200px;
 	height: $height;
@@ -18,19 +21,24 @@
 	}
 }
 
-@mixin mask($color, $opacity){
-    content: '';
-    background-color: $color;
-    opacity: $opacity;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+@mixin mask($color, $opacity) {
+	content: "";
+	background-color: $color;
+	opacity: $opacity;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+h1 {
+	font-family: $font-lobster;
 }
 
 html {
 	box-sizing: border-box;
+	font-family: $font-playfair;
 	header {
 		position: fixed;
 		width: 100vw;
@@ -75,14 +83,26 @@ html {
 		main {
 			.welcome {
 				height: 90vh;
-				background-color: lightblue;
+				background-color: #191d1e;
+				background-image: url(../image/image-1.jpg);
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				color: white;
 				@include flex-column-center;
+				p {
+					font-size: 1.3rem;
+				}
 			}
 			.menu {
 				.menu-header {
 					background-color: lightcoral;
 					height: 120px;
 					@include flex-column-center;
+					background-image: url(../image/image-2.jpg);
+					background-position: center;
+					background-size: cover;
+					color: white;
 					.search {
 						width: 400px;
 						margin: 0 auto;
@@ -131,18 +151,20 @@ html {
 						.card-body {
 							@include flex-column-center;
 							align-items: center;
-                            opacity: 0;
-                            position: relative;
-                            h5, p, button {
-                                z-index: 1;
-                            }
+							opacity: 0;
+							position: relative;
+							h5,
+							p,
+							button {
+								z-index: 1;
+							}
 							button {
 								width: 80%;
 								border-radius: 20px;
 							}
-                            &::before {
-                                @include mask(lightblue, 0.7);
-                            }
+							&::before {
+								@include mask(lightblue, 0.7);
+							}
 						}
 						// @media (max-width: 992px) {
 						// }

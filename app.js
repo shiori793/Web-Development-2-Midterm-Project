@@ -7,7 +7,7 @@ const checkoutButton = document.getElementById("checkout-button");
 const cartTotal = document.getElementById('cart-total');
 const numberOfTotalItem = document.getElementById('number-of-total-item');
 
-let user_id = 0;
+let user_id = 0;;
 
 class Cart {
     constructor(user_id) {
@@ -19,6 +19,7 @@ class Cart {
         if (this.cartItems.some(value => value.id == product.id)) {
             let index = this.cartItems.findIndex(value => value.id == product.id);
             this.cartItems[index].quantity += 1;
+            localStorage.setItem(this.user_id, this.cartItems);
             return true; //item already exists
         } else {
             this.cartItems.push({
@@ -26,17 +27,20 @@ class Cart {
                 price: product.price,
                 quantity: 1
             })
+            localStorage.setItem(this.user_id, this.cartItems);
             return false; //add new item
         }
     }
 
     deleteFromCart(product) {
         this.cartItems = this.cartItems.filter(value => value.id != product.id);
+        localStorage.setItem(this.user_id, this.cartItems);
         return this.cartItems;
     }
 
     clearCart() {
         this.cartItems = [];
+        localStorage.setItem(this.user_id, this.cartItems);
         return this.cartItems;
     }
 
@@ -144,38 +148,42 @@ function updateCartInfo(cart) {
 }
 
 window.addEventListener('load', () => {
-    // if (localStorage.getItem('user_id') != null) {
-    //     user_id = prompt("What is your user ID?")
-    // }
+    user_id = sessionStorage.getItem('loginUserID');
+    if (user_id != null && user_id > 0) {
+        const cart = new Cart(user_id);
 
-    user_id = 1;
-    const cart = new Cart(user_id);
-
-    //1. get the product list from API and set all value to the card and append to html
-    fetch("https://fakestoreapi.com/products/category/electronics")
-        .then(res => res.json())
-        .then(data => {
-            const productList = data;
-            createProductCards(productList, cart);
-
-            searchButton.addEventListener('click', () => {
-                let resultList = [];
-                const regex = new RegExp (searchInput.value, 'i');
-                resultList = productList.filter(item => regex.test(item.title));
-                createProductCards(resultList, cart);
+        clearButton.addEventListener('click', () => {
+            cart.clearCart();
+            const cartAllItems = document.querySelectorAll('.cart-item');
+            cartAllItems.forEach(item => {
+                cartDropdownList.removeChild(item);
             });
+            updateCartInfo(cart);
+            localStorage.setItem(user_id, cart);
+        })
 
-            clearButton.addEventListener('click', () => {
-                cart.clearCart();
-                const cartAllItems = document.querySelectorAll('.cart-item');
-                cartAllItems.forEach(item => {
-                    cartDropdownList.removeChild(item);
-                });
-                updateCartInfo(cart);
-            })
-
-            checkoutButton.addEventListener('click', () => {
-                user_id = 0;
-            });
+        checkoutButton.addEventListener('click', () => {
+            user_id = 0;
+            sessionStorage.removeItem('loginUserID');
+            window.location.replace('./index.html');
         });
+
+        //1. get the product list from API and set all value to the card and append to html
+        fetch("https://fakestoreapi.com/products/category/electronics")
+            .then(res => res.json())
+            .then(data => {
+                const productList = data;
+                createProductCards(productList, cart);
+
+                searchButton.addEventListener('click', () => {
+                    let resultList = [];
+                    const regex = new RegExp (searchInput.value, 'i');
+                    resultList = productList.filter(item => regex.test(item.title));
+                    createProductCards(resultList, cart);
+                });
+            });
+    } else {
+        alert('Your session is invalid. Please log in.');
+        window.location.replace('./index.html');
+    }
 });
