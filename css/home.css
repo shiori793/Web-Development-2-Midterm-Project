@@ -9,7 +9,7 @@ html {
 html header {
   position: fixed;
   width: 100vw;
-  z-index: 2;
+  z-index: 5;
 }
 html header .cart-dropdown-list .cart-total {
   text-align: center;
